@@ -1,0 +1,8 @@
+// REST Client
+// https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+
+@url=http://localhost:{{$dotenv API_PORT}}/api/owners
+
+### GET Client
+GET {{url}}/1
+Content-Type: application/json

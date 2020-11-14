@@ -21,13 +21,29 @@ const OwnerSchema = new Schema({
         unique: true
     },
     coverageArea: {
-
+        type: {
+            type: String,
+            enum: ['MultiPolygon'],
+            required: true
+        },
+        coordinates: {
+            type: [[[[Number]]]],
+            required: true
+        }
     },
     address: {
-
+        type: {
+            type: String,
+            enum: ['Point'],
+            required: true
+        },
+        coordinates: {
+            type: [Number],
+            required: true
+        }
     }
 },{
     versionKey: false
 });
 
-module.exports = mongoose.model('Owner', OwnerSchema);
+module.exports = mongoose.model('Owners', OwnerSchema);
