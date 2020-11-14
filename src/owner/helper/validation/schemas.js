@@ -13,6 +13,7 @@ const isLatLong = (value, {req}) => {
     return true;
 };
 
+
 const schemaPoint = [
     query('lat')
         .notEmpty().withMessage(msg('lat'))
@@ -23,26 +24,22 @@ const schemaPoint = [
 ];
 
 const schemaOwner = [
-    body('id')
-        .notEmpty().withMessage(msg('id')),
-    body('tradingName')
-        .notEmpty().withMessage(msg('tradingName')),
-    body('ownerName')
-        .notEmpty().withMessage(msg('ownerName')),
-    body('document')
-        .notEmpty().withMessage(msg('document')),
+    body('id').notEmpty().withMessage(msg('id')),
+    body('tradingName').notEmpty().withMessage(msg('tradingName')),
+    body('ownerName').notEmpty().withMessage(msg('ownerName')),
+    body('document').notEmpty().withMessage(msg('document')),
     body('coverageArea.type')
         .notEmpty().withMessage(msg('coverageArea.type'))
-        .isString(),
+        .equals('MultiPolygon').withMessage('The coverageArea must be of type MultiPolygon'),
     body('coverageArea.coordinates')
         .notEmpty().withMessage(msg('coverageArea.coordinates'))
         .isArray(),
     body('address.type')
         .notEmpty().withMessage(msg('address.type'))
-        .isString(),
+        .equals('Point').withMessage('The address must be of type Point'),
     body('address.coordinates')
         .notEmpty().withMessage(msg('address.coordinates'))
-        .isArray(),
+        .isArray()
 ];
 
 module.exports = {
