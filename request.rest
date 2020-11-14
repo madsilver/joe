@@ -3,7 +3,7 @@
 
 @url=http://localhost:{{$dotenv API_PORT}}/api
 
-### GET owner by id
+### GET healthcheck
 GET {{url}}/healthcheck
 
 ### GET owner by id
