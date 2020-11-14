@@ -1,5 +1,8 @@
-const get = (req, res, next) => {
-    res.send('fuck you');
+const service = require('../service');
+
+const get = (req, res) => {
+    service.get(req.params.id)
+        .then(data => res.json(data));
 };
 
 module.exports = {

@@ -1,14 +1,9 @@
 const model = require('../model');
 
 const get = async (id) => {
-    return await model.findOne({ id });
-};
-
-const create = async (data) => {
-
+    return await model.findOne({ id }, { '_id': 0 });
 };
 
 module.exports = {
-    get,
-    create
+    get
 };
