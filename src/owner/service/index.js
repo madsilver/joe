@@ -2,17 +2,15 @@ const model = require('../model');
 require('dotenv').config();
 
 const get = async (id) => {
-    return await (await model.findOne({ id }, { '_id': 0 }));
+    return await model.findOne({ id }, { _id: 0 });
 };
 
-const getNear = async (coord) => {
-    const maxDistance = process.env.MAX_DISTANCE || 10000;
-
+const getNear = async (data) => {
     const point = {
         type: 'Point',
         coordinates: [
-            parseFloat(coord['long']),
-            parseFloat(coord['lat'])
+            parseFloat(data['long']),
+            parseFloat(data['lat'])
         ]
     };
 
@@ -20,15 +18,22 @@ const getNear = async (coord) => {
         $geoNear: {
             near: point,
             query: { coverageArea: { $geoIntersects: { $geometry: point }}},
-            distanceField: maxDistance,
+            distanceField: 'distance',
             spherical: true
         }
+    }, {
+        $project: { _id: 0 }
     }];
 
     return await model.aggregate(agg).exec();
 };
 
+const create = async (data) => {
+    return await model.create(data);
+};
+
 module.exports = {
     get,
-    getNear
+    getNear,
+    create
 };
