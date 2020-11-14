@@ -1,8 +1,13 @@
 // REST Client
 // https://marketplace.visualstudio.com/items?itemName=humao.rest-client
 
-@url=http://localhost:{{$dotenv API_PORT}}/api/owners
+@url=http://localhost:{{$dotenv API_PORT}}/api
 
-### GET Client
-GET {{url}}/1
-Content-Type: application/json
+### GET owner by id
+GET {{url}}/healthcheck
+
+### GET owner by id
+GET {{url}}/owners/1
+
+### GET nearest owner
+GET {{url}}/owners?long=-43.297110&lat=-23.013538
