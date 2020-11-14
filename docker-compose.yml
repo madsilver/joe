@@ -1,0 +1,21 @@
+version: "3.1"
+services:
+    app:
+        container_name: joe-api
+        build: .
+        ports:
+            - "3000:3000"
+        environment:
+            - API_PORT=${API_PORT}
+            - DB_HOST=${DB_HOST}
+            - DB_PORT=${DB_PORT}
+        links:
+            - mongo
+
+    mongo:
+        container_name: joe-db
+        image: mongo
+        volumes:
+            - /joe/data:/data/db
+        ports:
+            - "27017:27017"
