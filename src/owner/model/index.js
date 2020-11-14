@@ -46,4 +46,6 @@ const OwnerSchema = new Schema({
     versionKey: false
 });
 
+OwnerSchema.index({ address: '2dsphere' });
+
 module.exports = mongoose.model('Owners', OwnerSchema);
