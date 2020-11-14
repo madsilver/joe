@@ -15,4 +15,4 @@ ENV NODE_ENV production
 
 EXPOSE 3000 27017 28017
 
-CMD ["pm2-runtime", "server.js", "-i", "max"]
+CMD ["pm2-runtime", "index.js", "-i", "max"]
