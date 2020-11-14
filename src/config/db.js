@@ -8,8 +8,12 @@ const port = process.env.DB_PORT;
 const dbname = process.env.DB_NAME;
 const dbUri = `mongodb://${host}:${port}/${dbname}`;
 
-mongoose.connect(dbUri, { useNewUrlParser: true, useUnifiedTopology: true });
-mongoose.set('useCreateIndex', true);
+mongoose.connect(dbUri, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false
+});
 
 process.on('SIGNIT', () => {
     mongoose.connection.close(function() {
