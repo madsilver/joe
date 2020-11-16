@@ -1,7 +1,7 @@
 const { query, body } = require('express-validator');
 
 const msg = field => `Field ${field} is required`;
-const isLatLong = (value, {req}) => {
+const isLatLong = (value) => {
     if (value === undefined)  return false;
 
     const arr = value.split('.');
@@ -44,6 +44,7 @@ const schemaOwner = [
 
 module.exports = {
     schemaPoint,
-    schemaOwner
+    schemaOwner,
+    isLatLong
 };
 

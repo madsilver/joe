@@ -4,8 +4,8 @@
   "description": "Joe Delivery API",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js",
-    "start": "pm2-runtime start index.js -i max",
+    "dev": "nodemon src/app.js",
+    "start": "pm2-runtime start src/app.js -i max",
     "test": "mocha ./src --recursive",
     "lint": "eslint"
   },
@@ -30,10 +30,11 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "chai-http": "^4.3.0",
     "eslint": "^7.13.0",
     "eslint-plugin-import": "^2.22.1",
+    "faker": "^5.1.0",
     "mocha": "^8.2.1",
-    "nodemon": "^2.0.6"
+    "nodemon": "^2.0.6",
+    "sinon": "^9.2.1"
   }
 }
