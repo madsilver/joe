@@ -2,10 +2,10 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const routerHealthcheck = require('./src/healthcheck/router');
-const routerOwner = require('./src/owner/router');
-const errorHandler = require('./src/config/errorHandler');
-require('./src/config/db');
+const routerHealthcheck = require('./healthcheck/router');
+const routerOwner = require('./owner/router');
+const errorHandler = require('./config/errorHandler');
+require('./config/db');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json({ type: 'application/json' }));
