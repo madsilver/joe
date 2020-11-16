@@ -2,7 +2,7 @@ FROM node:latest
 
 RUN mkdir -p /usr/src/app
 
-COPY package.json index.js .env /usr/src/app/
+COPY package.json .env /usr/src/app/
 COPY ./src /usr/src/app/src
 
 WORKDIR /usr/src/app
@@ -15,4 +15,4 @@ ENV NODE_ENV production
 
 EXPOSE 3000 27017 28017
 
-CMD ["pm2-runtime", "server.js", "-i", "max"]
+CMD ["pm2-runtime", "src/app.js", "-i", "max"]
